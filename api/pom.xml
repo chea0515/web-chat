@@ -5,9 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.ccfond.projects</groupId>
+        <groupId>com.ccfond.projects.webchat</groupId>
         <artifactId>web-chat</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>api</artifactId>
