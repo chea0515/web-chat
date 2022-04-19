@@ -19,7 +19,8 @@ public class WebChatApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(WebChatApplication.class, args);
         ConfigurableEnvironment env = ctx.getEnvironment();
+        String serPath = env.getProperty("server.servlet.context-path");
         String serPort = env.getProperty("server.port");
-        System.out.println("服务已启动，端口: " + serPort);
+        System.out.println("服务已启动，上下文路径: " + serPath + ", 端口: " + serPort);
     }
 }

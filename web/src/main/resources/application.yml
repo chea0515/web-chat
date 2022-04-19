@@ -3,4 +3,3 @@ spring:
     name: web-chat
   profiles:
     active: dev
-
