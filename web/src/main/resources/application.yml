@@ -1,6 +1,10 @@
 server:
   port: 1234
   servlet:
+    encoding:
+      enabled: true
+      force: true
+      charset: utf-8
     context-path: /webchat
 
 spring:
