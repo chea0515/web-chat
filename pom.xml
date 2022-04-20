@@ -11,7 +11,7 @@
     </parent>
 
     <groupId>com.ccfond.projects.webchat</groupId>
-    <artifactId>web-chat</artifactId>
+    <artifactId>webchat-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
@@ -81,17 +81,35 @@
             <!-- web-chat core -->
             <dependency>
                 <groupId>com.ccfond.projects.webchat</groupId>
-                <artifactId>api</artifactId>
+                <artifactId>webchat-api</artifactId>
                 <version>${webchat.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.ccfond.projects.webchat</groupId>
-                <artifactId>core</artifactId>
+                <artifactId>webchat-core</artifactId>
                 <version>${webchat.version}</version>
             </dependency>
 
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.ccfond.webchat.web.WebChatApplication</mainClass>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
