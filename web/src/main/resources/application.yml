@@ -1,5 +1,11 @@
+server:
+  port: 1234
+  servlet:
+    context-path: /webchat
+
 spring:
   application:
     name: web-chat
   profiles:
     active: dev
+

@@ -29,12 +29,22 @@
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <nacos.version>2021.0.1.0</nacos.version>
         <log4j.version>2.17.2</log4j.version>
+        <mybatis-plus.version>3.5.1</mybatis-plus.version>
+        <alibaba-druid.version>1.2.9</alibaba-druid.version>
 
         <webchat.version>1.0.0</webchat.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <!-- nacos -->
             <dependency>
@@ -49,11 +59,15 @@
             </dependency>
 
             <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${alibaba-druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
             <!-- log -->
@@ -65,6 +79,12 @@
             </dependency>
 
             <!-- web-chat core -->
+            <dependency>
+                <groupId>com.ccfond.projects.webchat</groupId>
+                <artifactId>api</artifactId>
+                <version>${webchat.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.ccfond.projects.webchat</groupId>
                 <artifactId>core</artifactId>

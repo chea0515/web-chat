@@ -89,6 +89,11 @@
 
         <dependency>
             <groupId>com.ccfond.projects.webchat</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ccfond.projects.webchat</groupId>
             <artifactId>core</artifactId>
         </dependency>
 

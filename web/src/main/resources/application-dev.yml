@@ -14,3 +14,23 @@ spring:
         health-check-interval: 5s
   config:
     import: optional:consul:localhost:8500
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.postgresql.Driver
+    username: webchat
+    password: 123456
+    url: jdbc:postgresql://localhost:5432/webchat
+
+  #jpa:
+  #  database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  #  hibernate:
+  #    ddl-auto: update
+  #  show-sql: true
+
+# mybatis-plus
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
