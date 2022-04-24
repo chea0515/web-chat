@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <!--日志文件输出路径-->
+    <property name="APP_NAME" value="webchat" />
+    <property name="MODULE_NAME" value="web" />
+    <property name="LOG_HOME" value="d:/dev/logs/${APP_NAME}" />
+    <!-- 日志编码 -->
+    <property name="log.charset" value="UTF-8" />
+    <!-- 日志文件大小,超过这个大小将重新创建 -->
+    <property name="log.max.size" value="25MB" />
+    <!-- 日志最大循环保留个数 -->
+    <property name="log.max.index" value="10" />
+    <!--控制台-->
+    <property name="STDOUT_LOG_PATTERN" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p ${APP_NAME}.${MODULE_NAME} [%thread] [%logger{80}:%line] %X{TRACE:-} %X{ERROR_CODE:-} - %msg %n "/>
+    <!-- 日志格式 -->
+    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} - %msg %n"/>
+
+    <!-- 控制台Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <encoder>
+            <pattern>${STDOUT_LOG_PATTERN}</pattern>
+            <charset>${log.charset}</charset>
+        </encoder>
+    </appender>
+    <!-- 日志文件 INFO -->
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <File>${LOG_HOME}/${APP_NAME}/${MODULE_NAME}/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}/${APP_NAME}/${MODULE_NAME}/info-%d{yyyyMMdd}.log.%i.zip</FileNamePattern>
+            <MaxHistory>${log.max.index}</MaxHistory>
+            <MaxFileSize>100MB</MaxFileSize>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>${log.max.size}</MaxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>${log.charset}</charset>
+        </encoder>
+    </appender>
+
+    <!-- 写入日志-->
+    <!--additivity 代表此日志是否会打印在root配置的appender里面-->
+    <logger name="com.ccfond" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE_INFO"/>
+    </logger>
+
+    <!-- spring日志打印级别 -->
+    <logger name="org.springframework" level="INFO" />
+
+    <!--默认配置 非组件打印的日志采用warn以上级别，并输出到other文件中 -->
+    <root level="WARN">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
