@@ -3,7 +3,7 @@
     <!--日志文件输出路径-->
     <property name="APP_NAME" value="webchat" />
     <property name="MODULE_NAME" value="web" />
-    <property name="LOG_HOME" value="d:/dev/logs/${APP_NAME}" />
+    <property name="LOG_HOME" value="/var/logs" />
     <!-- 日志编码 -->
     <property name="log.charset" value="UTF-8" />
     <!-- 日志文件大小,超过这个大小将重新创建 -->
